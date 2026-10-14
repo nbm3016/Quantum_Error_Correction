@@ -1,0 +1,29 @@
+{
+  "commit": "17502c538b4e904bd5b2f5719f12321053bcd7a8",
+  "status": "recorded from this session; not a B[2] computation",
+  "commands": [
+    {
+      "cwd": "qec",
+      "command": "python stim_load.py",
+      "exit": 0,
+      "stdout": [
+        "expectation logical1 = 0",
+        "32/75 hit: False"
+      ],
+      "reading": "assert_d3_noiseless passed, so acceptance is 1 and the logical weight is 0. The following line is printed without computing B[2]. It is not a measured value of 32/75."
+    },
+    {
+      "cwd": "qec",
+      "command": "python cli.py verify",
+      "exit": 0,
+      "seconds": 65.79,
+      "stdout": [
+        "AGC QEC FULL SUITE CERTIFICATE PASS"
+      ]
+    }
+  ],
+  "open": {
+    "B2": null,
+    "note": "32/75 stays open until the weight-2 pair sum is computed with run_statevector and score_sv."
+  }
+}

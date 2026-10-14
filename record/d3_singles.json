@@ -1,0 +1,15 @@
+{
+  "command": "python stim_load.py singles",
+  "cwd": "C:\\Users\\nbm30\\AGC_Framework_private\\qec",
+  "engine_commit": "17502c538b4e904bd5b2f5719f12321053bcd7a8",
+  "exit": 0,
+  "seconds": 514.32,
+  "stdout_file": "d3_singles.txt",
+  "a1_raw": "425/3",
+  "identity_response_locations": 116,
+  "a1_after_removal": "77/3",
+  "e1": "0",
+  "logical_single_fault_term_count": 0,
+  "B2": null,
+  "note": "Raw stdout is d3_singles.txt. B[2] was not computed."
+}

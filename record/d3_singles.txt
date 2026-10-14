@@ -1,0 +1,31 @@
+singles 100/2444
+singles 200/2444
+singles 300/2444
+singles 400/2444
+singles 500/2444
+singles 600/2444
+singles 700/2444
+singles 800/2444
+singles 900/2444
+singles 1000/2444
+singles 1100/2444
+singles 1200/2444
+singles 1300/2444
+singles 1400/2444
+singles 1500/2444
+singles 1600/2444
+singles 1700/2444
+singles 1800/2444
+singles 1900/2444
+singles 2000/2444
+singles 2100/2444
+singles 2200/2444
+singles 2300/2444
+singles 2400/2444
+a1 = 425/3
+e1 = 0
+identity-response locations 116
+a1 after removing them = 77/3
+a1 target 77/3 hit: True
+e1 target 0 hit: True
+logical single-fault term count 0
