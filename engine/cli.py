@@ -1,4 +1,4 @@
-"""Zero-float 7-qubit / 128-line stabilizer router.
+"""Address register, seven extractors, and the commutation record.
 
 Run from this directory: python cli.py <command>
 """
@@ -23,7 +23,7 @@ from address import (
     psi,
 )
 from router import format_route, generator_words, parse_word
-from syndrome import format_syndrome
+from syndrome import format_image, format_syndrome
 from symplectic import fmt_g, fmt_op
 
 ROOT = Path(__file__).resolve().parent
@@ -106,6 +106,12 @@ def cmd_address(signs_text: str, gauge: str) -> int:
 def cmd_route(start: str, word: str, gauge: str) -> int:
     print(format_route(parse_signs(start), parse_word(word), gauge))
     return 0 if "FAIL" not in format_route(parse_signs(start), parse_word(word), gauge) else 1
+
+
+def cmd_map() -> int:
+    print(format_image())
+    print(COUNTS)
+    return 0
 
 
 def cmd_syndrome(error: str, start: str) -> int:
@@ -255,6 +261,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="cli.py")
     sub = parser.add_subparsers(dest="command", required=True)
     sub.add_parser("status")
+    sub.add_parser("map")
     address = sub.add_parser("address")
     address.add_argument("--signs", required=True)
     address.add_argument("--gauge", choices=("C", "L"), default="C")
@@ -288,6 +295,8 @@ def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     if args.command == "status":
         return cmd_status()
+    if args.command == "map":
+        return cmd_map()
     if args.command == "address":
         return cmd_address(args.signs, args.gauge)
     if args.command == "route":

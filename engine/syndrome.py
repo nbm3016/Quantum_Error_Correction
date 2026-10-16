@@ -153,6 +153,23 @@ def _phase_inverse(lam: G, op: Op) -> Op:
     return (op[0] + inv) % 4, op[1]
 
 
+def format_image() -> str:
+    """The consistent map: address, extractors, commutation record."""
+    lines = [
+        "image CONSISTENT",
+        "data-register address (s_M, s_J, s_D, s_B, s_A, s_c, s_Sigma)",
+    ]
+    for name, op in address_ops().items():
+        lines.append(f"address {name} {fmt_op(op)}")
+    lines.append("checks seven extractors")
+    for name, op in zip(EXTRACTOR_NAMES, extractors(), strict=True):
+        lines.append(f"check {name} {fmt_op(op)}")
+    lines.append("syndrome F_2 commutation of a fault against the checks")
+    lines.append("face M B_11 B_13 product -i I_4")
+    lines.append("syndrome is not a face node")
+    return "\n".join(lines)
+
+
 def format_syndrome(error_text: str, start: tuple[int, ...]) -> str:
     error = parse_pauli(error_text)
     recovery, syndrome, flips = recover(error, start)

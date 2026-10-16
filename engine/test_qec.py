@@ -215,6 +215,18 @@ def run_expansion() -> bool:
     _expect("d3 ring", True)
     assert_d3_noiseless()
     _expect("d3 noiseless logical", True)
+    from syndrome import format_image, pauli_syndrome_bits
+    from symplectic import parse_pauli
+
+    image = format_image()
+    bits = pauli_syndrome_bits(parse_pauli("XIIIIII"))
+    _expect(
+        "qec image",
+        "data-register" in image
+        and "syndrome is not a face node" in image
+        and len(bits) == 7
+        and set(bits) <= {0, 1},
+    )
     baseline = Path(__file__).resolve().parents[1] / "core" / "complete_baseline.json"
     if baseline.is_file():
         digest = hashlib.sha256(baseline.read_bytes()).hexdigest()
